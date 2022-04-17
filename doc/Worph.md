@@ -1,4 +1,4 @@
-# Morph – The Word Morph Game
+# Worph – The Word Morph Game
 #### Game designed by Jonathan Rowe (c) 2010
 ## Object
 
