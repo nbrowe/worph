@@ -54,5 +54,3 @@ function isAWorph(current, target) {
 
   return dist == 1 && (lengthDiff == 0 || (lengthDiff == 1 && !lastS));
 }
-
-worph();
