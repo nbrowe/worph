@@ -2,7 +2,7 @@
   "name": "worph",
   "version": "0.1.0",
   "description": "Word Morph. By Nathaniel Rowe",
-  "main": "index.js",
+  "main": "index.mjs",
   "directories": {
     "doc": "doc"
   },
