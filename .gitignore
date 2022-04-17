@@ -1,0 +1,10 @@
+# Don't track folders
+node_modules/
+
+# Or compiled files
+*.o
+
+# Or packages
+*.7z
+*.rar
+*.zip
