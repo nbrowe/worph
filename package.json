@@ -1,0 +1,26 @@
+{
+  "name": "worph",
+  "version": "0.1.0",
+  "description": "Word Morph. By Nathaniel Rowe",
+  "main": "index.mjs",
+  "directories": {
+    "doc": "doc"
+  },
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nbrowe/worph.git"
+  },
+  "author": "Nathaniel Rowe",
+  "license": "https://github.com/nbrowe/worph/blob/master/LICENSE",
+  "bugs": {
+    "url": "https://github.com/nbrowe/worph/issues"
+  },
+  "homepage": "https://github.com/nbrowe/worph#readme"
+}
