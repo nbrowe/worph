@@ -4,7 +4,7 @@ import prompt from "prompt-sync";
 const pr = prompt();
 
 export default function worph() {
-  const numberOfPlayers = parseInt(pr("Players?", 0));
+  const numberOfPlayers = parseInt(pr("Players? ", 0));
   let startPlayer = Math.floor(Math.random() * numberOfPlayers);
   let victor = playWorph(numberOfPlayers, startPlayer);
   console.log(`Player ${victor} wins!`);
@@ -19,12 +19,9 @@ function playWorph(playerCount, startPlayer) {
   while (!(playerCanMove.filter(p => p).length == 1)) {
     let attempt = pr(`Player ${currentPlayer}, the word is [${currentWord}]. Worph the word. > `).toLowerCase();
     if (!moveHistory.includes(attempt) && isInDictionary(attempt) && isAWorph(currentWord, attempt)) {
-      console.log(` Good word`);
       moveHistory.push(attempt);
       currentWord = attempt;
     } else {
-      console.log(`The word ${attempt} cannot be played.`)
-      console.log(`        [inHistory? ${moveHistory.includes(attempt)}, inDict? ${isInDictionary(attempt)}, validWorph? ${isAWorph(currentWord, attempt)}]`)
       playerCanMove[currentPlayer] = false;
     }
     currentPlayer = (currentPlayer + 1) % playerCount;
@@ -49,8 +46,6 @@ function isAWorph(current, target) {
   const dist = editDistance(current, target, current.length, target.length)
   const lengthDiff = target.length - current.length;
   const lastS = target.endsWith('s') && !current.endsWith('s');
-  // TODO need to find a way to detect that, if there was a length change, that there was an added s
-  console.log(`        [editdist] dist=${dist}, lengthDiff=${lengthDiff}, ${(lastS? '':'no ') + 'final S'}`)
 
   return dist == 1 && (lengthDiff == 0 || (lengthDiff == 1 && !lastS));
 }
