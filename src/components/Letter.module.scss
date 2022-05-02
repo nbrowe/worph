@@ -1,0 +1,25 @@
+.letter {
+  color: black;
+  font-size: 2.2rem;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  line-height: 60px;
+  font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+  border: 2px solid #d3d6da;
+  font-weight: 600;
+  width: 60px;
+  height: 60px;
+
+  &.answered {
+    color: white;
+    border: none;
+    line-height: 64px;
+    width: 64px;
+    height: 64px;
+  }
+
+  &.unanswered {
+    border: 2px solid #878a8c;
+  }
+}
