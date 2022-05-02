@@ -1,5 +1,5 @@
-import styles from './Letter.module.scss';
 import { LetterStatusType, LetterType } from '../types/BoardTypes';
+import './Letter.css';
 
 const colorMap: Record<LetterStatusType, string> = {
   "correct": "#6aaa64",
@@ -11,7 +11,7 @@ const colorMap: Record<LetterStatusType, string> = {
 export const Letter: React.FC<LetterType> = ({ letter, status }) => {
   return (
     <div 
-      className={`${styles.letter} ${letter !== undefined ? status === "unanswered" ? styles.unanswered : styles.answered : ""}`} 
+      className={`letter ${letter !== undefined ? status === "unanswered" ? 'unanswered' : 'answered' : ""}`} 
       style={{ backgroundColor: colorMap[status ?? "unanswered"] }}>
       {letter}
     </div>

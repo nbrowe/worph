@@ -12,12 +12,10 @@ export function letterArrayToString(word: LetterType[]) {
 
 export function validateGameState(guess: LetterType[], secret: string): WordType {
   const response: WordType = {
-    word: [
-      // TODO need to initialize this as null somehow
-      { letter: '', status: 'unanswered' },
-      { letter: '', status: 'unanswered' },
-      { letter: '', status: 'unanswered' },
-    ]
+    word: guess.map(
+      (l: LetterType) => (
+        { letter: l.letter, status: 'unanswered' }
+      ))
   };
 
   // Ensure response is 5 letters long
@@ -44,5 +42,5 @@ export function validateGameState(guess: LetterType[], secret: string): WordType
     // Guess' word length was not 5
     alert('Please enter a 5-letter word.');
   }
-  return response; // * If input is malformed or inappropriate, status 'unanswered'
+  return response;
 }

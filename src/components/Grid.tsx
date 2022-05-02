@@ -1,51 +1,47 @@
 import { Word, EmptyWord, InProgressWord } from './Word';
 import { WordType, GameboardType, LetterType } from '../types/BoardTypes';
 import { useState, useEffect } from 'react';
+import './Grid.css';
 
-import styles from './Grid.module.scss';
 import { validateGameState, generateWord } from '../Game';
 
-export const Grid = () => {
-  const [hiddenWord] = useState(generateWord());
-  const [gameBoard, setGameBoard] = useState([]);
-  const [inProgressWord, setInProgressWord] = useState([]);
-
-  const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.code === 'Backspace' || e.code === 'Delete') {
-      setInProgressWord((word: string | any[]) => word?.slice(0, word?.length - 1));
-    } else if (e.code === 'Enter') {
-      if (inProgressWord.length < 5) {
-        console.log('Enter 5 Letters');
-      } else {
-        const wordResult = validateGameState(inProgressWord, hiddenWord)
-        console.log(wordResult);
-        setGameBoard((board: any) => {
-          return [...board, wordResult];
-        });
-        setInProgressWord([]);
-      }
-    } else if (inProgressWord.length < 5) {
-      if (e.code >= 'a' && e.code <= 'z') {
-        setInProgressWord((word: any) => [
-          ...word,
-          { letter: e.key.toUpperCase(), status: 'unanswered' },
-        ]);
-      }
-    }
-  };
+function Grid() {
+  const hiddenWord = generateWord();
+  const [inProgressWord, setInProgressWord] = useState<LetterType[]>([]);
+  const [gameBoard, setGameBoard] = useState<GameboardType>([]);
 
   useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Delete a letter...
+      if (e.code === 'Backspace' || e.code === 'Delete') {
+        setInProgressWord((prevWord) => prevWord.slice(0, prevWord.length - 1));
+      } else if (e.code === 'Enter') {
+        const wordResult = validateGameState(inProgressWord, hiddenWord)
+        console.log(wordResult);
+        setGameBoard(board => [...board, wordResult]);
+        setInProgressWord([]);
+      } else if (inProgressWord && inProgressWord.length < 5) {
+        if (e.key >= 'a' && e.key <= 'z') {
+          setInProgressWord((prevWord) => [
+            ...prevWord,
+            { letter: e.key.toUpperCase(), status: 'unanswered' },
+          ]);
+        }
+      }
+    };
+
+
     document.addEventListener('keydown', handleKeyDown);
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [handleKeyDown]);
+  }, [hiddenWord, inProgressWord]);
 
   return (
-    <div className={styles.grid}>
-      {gameBoard.map((word: Array<LetterType>, index: any) => (
-        <Word key={index} word={word} />
+    <div className="grid-main">
+      {gameBoard && gameBoard.map((word: WordType, index: any) => (
+        <Word key={index} word={word.word} />
       ))}
       <InProgressWord word={inProgressWord} />
       {Array(5 - gameBoard.length)
@@ -56,3 +52,5 @@ export const Grid = () => {
     </div>
   );
 };
+
+export default Grid;
