@@ -1,34 +1,31 @@
 import React, { useState } from "react";
 import { getGameStartState, isValidMove } from "../functions/Worph";
-import './Game.css';
+import "./Game.css";
 
 function Game() {
   const [userInputText, setUserInputText] = useState("");
   //TODO need to update WordType to be less pedantic
   const [currentWord, setCurrentWord] = useState<string>(getGameStartState());
   // const [currentPlayer, setCurrentPlayer] = useState(0);
-  const [moveHistory, setMoveHistory] = useState<string[]>([]);
+  const [moveHistory, setMoveHistory] = useState<string[]>([currentWord]);
 
   const handleEnterPressed = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      console.log("in handlesubmit", e);
       if (
         isValidMove(currentWord, userInputText) &&
         !moveHistory.includes(userInputText)
       ) {
-        console.log("move valid!!");
         setMoveHistory((prevHist) => [...prevHist, userInputText]);
         setCurrentWord(userInputText);
         setUserInputText("");
       } else {
-        console.log("failed");
-        notifyBadInput();
+        notifyBadInput(moveHistory.includes(userInputText)? `${userInputText} has already been played`: `${userInputText} is not valid`);
       }
     }
   };
 
-  function notifyBadInput() {
-    throw new Error("Function not implemented.");
+  function notifyBadInput(e: string) {
+    alert(e);
   }
 
   /**
@@ -77,15 +74,18 @@ function Game() {
         <table>
           <thead className="history header">
             <tr>
-              <th>[history]</th>
+              <th>history</th>
             </tr>
           </thead>
           <tbody className="history body">
-            {moveHistory.slice().reverse().map((word: string, index: number) => (
-              <tr key={index}>
-                <td>{word}</td>
-              </tr>
-            ))}
+            {moveHistory
+              .slice()
+              .reverse()
+              .map((word: string, index: number) => (
+                <tr key={index}>
+                  <td>{word}</td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>
