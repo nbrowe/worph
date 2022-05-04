@@ -1,0 +1,13 @@
+.current-word {
+  color: brown;
+}
+table, td, th {
+  border: 1px solid grey;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  text-align: center;
+}

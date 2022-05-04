@@ -3,7 +3,7 @@ import { WordType, GameboardType, LetterType } from "../types/BoardTypes";
 import { useState, useEffect } from "react";
 import "./Grid.css";
 
-import { validateGameState, getGameStartState } from "../Game";
+import { validateWordleGameState, getGameStartState } from "../functions/Worph";
 
 function Grid() {
   const [hiddenWord] = useState<string>(getGameStartState());
@@ -16,7 +16,7 @@ function Grid() {
       if (e.code === "Backspace" || e.code === "Delete") {
         setInProgressWord((prevWord) => prevWord.slice(0, prevWord.length - 1));
       } else if (e.code === "Enter") {
-        const wordResult = validateGameState(inProgressWord, hiddenWord);
+        const wordResult = validateWordleGameState(inProgressWord, hiddenWord);
         setGameBoard((board) => [...board, wordResult]);
         setInProgressWord([]);
       } else if (inProgressWord && inProgressWord.length < 5) {

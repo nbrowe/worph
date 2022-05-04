@@ -1,8 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 
 import Grid from './components/Grid';
+import Game from './components/Game';
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
           {/* Learn React */}
         {/* </a> */}
       {/* </header> */}
-      <Grid/>
+      {/* <Grid/> */}
+      <Game/>
     </div>
   );
 }
