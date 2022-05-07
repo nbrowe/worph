@@ -1,0 +1,18 @@
+.current-word {
+  color: brown;
+}
+table, td, th {
+  border: 1px solid grey;
+}
+table {
+  margin: 1em;
+  border-collapse: collapse;
+  /* width: 100%; */
+}
+th, td {
+  text-align: center;
+  padding: 1px 10px
+}
+thead {
+  background: goldenrod;
+}
