@@ -1,6 +1,4 @@
 import { isInDictionary, getWorphSeed } from "../constants/WorphDict";
-import { WordType, LetterType } from "../types/BoardTypes";
-import { letterArrayToString } from "./Conversions";
 
 /**
  * Generates the starting state of the game.

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { getGameStartState, isValidMove } from "../functions/Worph";
+import { TextInput } from "./common/TextInput";
 import "./Game.css";
 
 function Game() {
@@ -19,7 +20,11 @@ function Game() {
       setCurrentWord(userInputText);
       setUserInputText("");
     } else {
-      notifyBadInput(moveHistory.includes(userInputText) ? `${userInputText} has already been played` : `${userInputText} is not valid`);
+      notifyBadInput(
+        moveHistory.includes(userInputText)
+          ? `${userInputText} has already been played`
+          : `${userInputText} is not valid`
+      );
     }
   };
 
@@ -30,14 +35,13 @@ function Game() {
   return (
     <>
       <form onSubmit={onFormSubmit}>
-        <input
-          type="text"
+        <TextInput
+          text={userInputText}
           name="attempt"
           placeholder="type your worph..."
-          value={userInputText}
-          onChange={(e) => setUserInputText(e.target.value)}
+          setText={setUserInputText}
         />
-        <input type="submit" value="send"/>
+        <input type="submit" value="send" />
         <h4>
           the word is <b className="current-word">{currentWord}</b>
         </h4>
