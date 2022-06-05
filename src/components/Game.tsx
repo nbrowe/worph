@@ -27,33 +27,6 @@ function Game() {
     alert(e);
   }
 
-  /**
-   * @deprecated
-   * Based on original command-line functionality for Worph.
-   * @param playerCount
-   * @param startPlayer
-   * @returns
-   */
-  // function playWorph(playerCount=4) {
-  //   // let currentPlayer = startPlayer WHICH WAS AN INPUT PARAM;
-  //   const moveHistory = [currentWord];
-  //   const playerCanMove = Array(playerCount).fill(true);
-  //   // Game loop
-  //   while (!(playerCanMove.filter((p) => p).length == 1)) {
-  //     let attempt = pr(
-  //       `Player ${currentPlayer}, the word is [${currentWord}]. Worph the word. > `
-  //     ).toLowerCase();
-  //     if (!moveHistory.includes(attempt) && isValidMove(currentWord, attempt)) {
-  //       setMoveHistory((prevHist) => [...prevHist, attempt]);
-  //       setCurrentWord(attempt);
-  //     } else {
-  //       playerCanMove[currentPlayer] = false;
-  //     }
-  //     currentPlayer = (currentPlayer + 1) % playerCount;
-  //   // }
-  //   return currentPlayer;
-  // }
-
   return (
     <>
       <form onSubmit={onFormSubmit}>
