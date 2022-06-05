@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { getGameStartState, isValidMove } from "../functions/Worph";
-import { TextInput } from "./common/TextInput";
+import TextInputForm from "./common/form/TextInputForm";
 import "./Game.css";
 
 function Game() {
@@ -11,6 +11,10 @@ function Game() {
   const [moveHistory, setMoveHistory] = useState<string[]>([currentWord]);
 
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    function notifyBadInput(e: string) {
+      alert(e);
+    }
+
     e.preventDefault();
     if (
       isValidMove(currentWord, userInputText) &&
@@ -28,24 +32,21 @@ function Game() {
     }
   };
 
-  function notifyBadInput(e: string) {
-    alert(e);
-  }
-
   return (
     <>
-      <form onSubmit={onFormSubmit}>
-        <TextInput
-          text={userInputText}
-          name="attempt"
-          placeholder="type your worph..."
-          setText={setUserInputText}
-        />
-        <input type="submit" value="send" />
-        <h4>
-          the word is <b className="current-word">{currentWord}</b>
-        </h4>
-      </form>
+      <TextInputForm
+      //TODO should pass a "name" to the form to apply custom CSS.
+        textInputProps={{
+          name: "attempt",
+          placeholder: "type your worph...",
+          text: userInputText,
+          onChange: setUserInputText,
+        }}
+        onSubmit={onFormSubmit}
+      />
+      <h4>
+        the word is <b className="current-word">{currentWord}</b>
+      </h4>
       <div>
         <table>
           <thead className="history header">
