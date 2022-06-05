@@ -9,18 +9,17 @@ function Game() {
   // const [currentPlayer, setCurrentPlayer] = useState(0);
   const [moveHistory, setMoveHistory] = useState<string[]>([currentWord]);
 
-  const handleEnterPressed = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      if (
-        isValidMove(currentWord, userInputText) &&
-        !moveHistory.includes(userInputText)
-      ) {
-        setMoveHistory((prevHist) => [...prevHist, userInputText]);
-        setCurrentWord(userInputText);
-        setUserInputText("");
-      } else {
-        notifyBadInput(moveHistory.includes(userInputText)? `${userInputText} has already been played`: `${userInputText} is not valid`);
-      }
+  const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (
+      isValidMove(currentWord, userInputText) &&
+      !moveHistory.includes(userInputText)
+    ) {
+      setMoveHistory((prevHist) => [...prevHist, userInputText]);
+      setCurrentWord(userInputText);
+      setUserInputText("");
+    } else {
+      notifyBadInput(moveHistory.includes(userInputText) ? `${userInputText} has already been played` : `${userInputText} is not valid`);
     }
   };
 
@@ -57,19 +56,19 @@ function Game() {
 
   return (
     <>
-      <div>
+      <form onSubmit={onFormSubmit}>
         <input
           type="text"
           name="attempt"
           placeholder="type your worph..."
           value={userInputText}
           onChange={(e) => setUserInputText(e.target.value)}
-          onKeyUp={handleEnterPressed}
         />
+        <input type="submit" value="send"/>
         <h4>
           the word is <b className="current-word">{currentWord}</b>
         </h4>
-      </div>
+      </form>
       <div>
         <table>
           <thead className="history header">
