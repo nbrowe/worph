@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { getGameStartState, isValidMove } from "../functions/Worph";
-import TextInputForm from "./common/form/TextInputForm";
 import "./Game.css";
+import ProposedWordEntryField from "./game/user_input/ProposedWordEntryField";
 
 function Game() {
   const [userInputText, setUserInputText] = useState("");
@@ -34,7 +34,7 @@ function Game() {
 
   return (
     <>
-      <TextInputForm
+      <ProposedWordEntryField
       //TODO should pass a "name" to the form to apply custom CSS.
         textInputProps={{
           name: "attempt",
