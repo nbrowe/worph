@@ -1,4 +1,4 @@
-export interface TextInputProps {
+export interface TextInputType {
   name: string;
   text: string;
   onChange: Function;
@@ -13,7 +13,7 @@ export interface TextInputProps {
  * @param placeholder A string to display when the field is empty.
  * @returns TextInput
  */
-const TextInput: React.FC<TextInputProps> = ({
+const TextInput: React.FC<TextInputType> = ({
   name,
   text,
   onChange,
