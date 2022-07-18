@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { getGameStartState, isValidMove } from "../functions/Worph";
 import "./Game.css";
-import GameWordHistory from "./game/GameWordHistory";
 import ProposedWordEntryField from "./game/user_input/ProposedWordEntryField";
 
 function Game() {
   const [userInputText, setUserInputText] = useState("");
+  //TODO need to update WordType to be less pedantic
   const [currentWord, setCurrentWord] = useState<string>(getGameStartState());
   // const [currentPlayer, setCurrentPlayer] = useState(0);
   const [moveHistory, setMoveHistory] = useState<string[]>([currentWord]);
@@ -16,7 +16,6 @@ function Game() {
     }
 
     e.preventDefault();
-
     if (
       isValidMove(currentWord, userInputText) &&
       !moveHistory.includes(userInputText)
@@ -48,7 +47,25 @@ function Game() {
       <h4>
         the word is <b className="current-word">{currentWord}</b>
       </h4>
-      <GameWordHistory history={moveHistory}/>
+      <div>
+        <table>
+          <thead className="history header">
+            <tr>
+              <th>history</th>
+            </tr>
+          </thead>
+          <tbody className="history body">
+            {moveHistory
+              .slice()
+              .reverse()
+              .map((word: string, index: number) => (
+                <tr key={index}>
+                  <td>{word}</td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 }

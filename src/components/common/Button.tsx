@@ -12,13 +12,13 @@ const buttonColorMap: Record<ButtonColorType, string> = {
   "cyan": "#00ffff"
 };
 
-interface ButtonType {
+interface ButtonProps {
   label: string,
   disabled: boolean,
   color: ButtonColorType
 };
 
-export const Button: React.FC<ButtonType> = ({ label, disabled = false, color }) => {
+export const Button: React.FC<ButtonProps> = ({ label, disabled = false, color }) => {
   return (
     <button
       className={`${disabled ? "disabled" : ""}`} 
