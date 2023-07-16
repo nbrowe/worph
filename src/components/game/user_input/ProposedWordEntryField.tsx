@@ -1,13 +1,13 @@
 import React from "react";
-import TextInput, { TextInputProps } from "../../common/form/TextInput";
+import TextInput, { TextInputType } from "../../common/form/TextInput";
 
-export interface ProposedWordEntryFieldProps {
-  textInputProps: TextInputProps;
+export interface ProposedWordEntryFieldType {
+  textInputProps: TextInputType;
   onSubmit: Function,
   showSubmitButton?: boolean;
 }
 
-const ProposedWordEntryField: React.FC<ProposedWordEntryFieldProps> = ({
+const ProposedWordEntryField: React.FC<ProposedWordEntryFieldType> = ({
   textInputProps,
   onSubmit,
   showSubmitButton = false,

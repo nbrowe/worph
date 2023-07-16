@@ -1,0 +1,12 @@
+table.history {
+  width: 70%;
+}
+
+table.header {
+  background-color: goldenrod;
+}
+
+table td {
+  display: flex;
+  justify-content: center;
+}
