@@ -1,13 +1,16 @@
-.current-word {
+h1 .current-word {
   color: brown;
+  font-size: 48px;
 }
-table, td, th {
-  border: 1px solid grey;
+div .current-word {
+  top: 50%;
+  position: sticky;
+  vertical-align: baseline;
 }
+
 table {
-  margin: 1em;
   border-collapse: collapse;
-  /* width: 100%; */
+  font-size: 24px;
 }
 th, td {
   text-align: center;
@@ -15,4 +18,41 @@ th, td {
 }
 thead {
   background: goldenrod;
+}
+.game-input {
+  border: thin dashed lime;
+
+  position: sticky;
+  top: 90%;
+  width: 100%;
+}
+.flex-parent {
+  display: flex;
+  border: thick solid purple;
+  height: 100vh;
+  width: 97vw;
+  margin: 15px;
+}
+.flex-child {
+  border: thin dashed chocolate;
+  padding: 2px;
+  margin: 3px;
+  flex: auto;
+}
+.left {
+  width: 75vw;
+  top: 50%;
+}
+.right {
+  width: 25vw;
+}
+.history {
+  text-shadow: 1ch;
+  width: 100%;
+}
+
+
+.players {
+  border: 1px solid red;
+  height: 10%;
 }

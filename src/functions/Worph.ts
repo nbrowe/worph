@@ -2,7 +2,7 @@ import { isInDictionary, getWorphSeed } from "../constants/WorphDict";
 
 /**
  * Generates the starting state of the game.
- * @returns Returns a 3-letter word from the dictionary.
+ * @returns a 3-letter word from the dictionary.
  */
 export function getGameStartState(): string {
   return getWorphSeed();
@@ -22,7 +22,7 @@ export function isValidMove(from: string, to: string): boolean {
  * into the second string by one change, return true.
  * @param current The current word.
  * @param target The word to worph into.
- * @returns Returns true if the worph is valid.
+ * @returns true if the worph is valid.
  * @author nbrowe
  */
 function isAWorph(current: string, target: string): boolean {
@@ -34,7 +34,7 @@ function isAWorph(current: string, target: string): boolean {
    * @param str2 Second string.
    * @param m Length of `str1`.
    * @param n Length of `str2`.
-   * @returns Returns the edit distance between `str1` and `str2`.
+   * @returns the edit distance between `str1` and `str2`.
    */
   function editDistance(
     str1: string,

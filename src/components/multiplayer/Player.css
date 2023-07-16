@@ -1,0 +1,14 @@
+.player-card {
+  margin: 2px;
+  border: 1px solid black;
+}
+
+.small {
+  width: 100%;
+  height: 70%;
+}
+
+.large {
+  width: 125%;
+  height: 100%;
+}

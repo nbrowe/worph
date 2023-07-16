@@ -1,3 +1,6 @@
+import React from "react"; // Apparently doing this to fix how React sees the "input" tag
+import "./TextInput.css";
+
 export interface TextInputProps {
   name: string;
   text: string;
@@ -21,6 +24,7 @@ const TextInput: React.FC<TextInputProps> = ({
 }) => {
   return (
     <input
+      className="input"
       type="text"
       name={name}
       placeholder={placeholder}
