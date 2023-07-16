@@ -1,8 +1,8 @@
 import React from "react";
-import TextInput, { TextInputType } from "../../common/form/TextInput";
+import TextInput, { TextInputProps } from "../../common/form/TextInput";
 
 export interface ProposedWordEntryFieldType {
-  textInputProps: TextInputType;
+  textInputProps: TextInputProps;
   onSubmit: Function,
   showSubmitButton?: boolean;
 }
