@@ -1,8 +1,8 @@
 import React from "react";
-import TextInput, { TextInputType } from "./TextInput";
+import TextInput, { TextInputProps } from "./TextInput";
 
 export interface TextInputFormType {
-  textInputProps: TextInputType;
+  textInputProps: TextInputProps;
   onSubmit: Function,
   showSubmitButton?: boolean;
 }
