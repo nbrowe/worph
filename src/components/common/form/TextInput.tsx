@@ -1,4 +1,7 @@
-export interface TextInputType {
+import React from "react"; // Apparently doing this to fix how React sees the "input" tag
+import "./TextInput.css";
+
+export interface TextInputProps {
   name: string;
   text: string;
   onChange: Function;
@@ -13,7 +16,7 @@ export interface TextInputType {
  * @param placeholder A string to display when the field is empty.
  * @returns TextInput
  */
-const TextInput: React.FC<TextInputType> = ({
+const TextInput: React.FC<TextInputProps> = ({
   name,
   text,
   onChange,
@@ -21,6 +24,7 @@ const TextInput: React.FC<TextInputType> = ({
 }) => {
   return (
     <input
+      className="input"
       type="text"
       name={name}
       placeholder={placeholder}

@@ -1,3 +1,4 @@
+// Unused type from Wordle clone
 export type LetterStatusType =
   | "correct"
   | "incorrect-position"
