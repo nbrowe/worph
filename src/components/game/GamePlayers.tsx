@@ -15,7 +15,7 @@ const GamePlayers: React.FC<GamePlayersProps> = ({ players, activePlayer }) => {
           playerName={playerName}
           id={players.indexOf(playerName)}
           size={`${
-            activePlayer == players.indexOf(playerName) ? "large" : "small"
+            activePlayer === players.indexOf(playerName) ? "large" : "small"
           }`}
         />
       ))}
