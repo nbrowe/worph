@@ -8,20 +8,34 @@ div .current-word {
   vertical-align: baseline;
 }
 
-table {
+.history {
+  max-height: 90vh;
+  width: 100%;
+  display: block;
+  overflow-y: auto;
+}
+.history table {
   border-collapse: collapse;
   font-size: 24px;
+  width: 100%;
 }
-th, td {
-  text-align: center;
-  padding: 1px 10px
-}
-thead {
+.history thead {
   background: goldenrod;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
+.history tbody {
+  max-height: 85vh;
+  overflow-y: scroll;
+}
+.history th, .history td {
+  text-align: center;
+  padding: 1px 10px;
+}
+
 .game-input {
   border: thin dashed lime;
-
   position: sticky;
   top: 90%;
   width: 100%;
@@ -46,13 +60,8 @@ thead {
 .right {
   width: 25vw;
 }
-.history {
-  text-shadow: 1ch;
-  width: 100%;
-}
-
 
 .players {
   border: 1px solid red;
-  height: 10%;
+  height: 10vh;
 }

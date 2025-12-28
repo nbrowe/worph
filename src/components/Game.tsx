@@ -37,15 +37,15 @@ function Game() {
     }
   };
 
-  //! mock data here.
-  const players = ["alice", "bob", "charlie", "dirk", "eve"];
+  // These are placeholder players for now
+  const players = ["alice", "bob", "charlie", "dirk", "TESTING"];
 
   return (
     <>
       <div className="flex-parent">
         <div className="left flex-child">
           <div className="players">
-            <GamePlayers players={players} activePlayer={currentPlayer}/>
+            <GamePlayers players={players} activePlayer={currentPlayer} />
           </div>
           <div className="current-word">
             <h1>
@@ -64,24 +64,26 @@ function Game() {
             />
           </div>
         </div>
-        <div className="right flex-child">
-          <table className="history">
-            <thead className="history header">
-              <tr>
-                <th>history</th>
-              </tr>
-            </thead>
-            <tbody className="history body">
-              {moveHistory
-                .slice()
-                .reverse()
-                .map((word: string, index: number) => (
-                  <tr key={index}>
-                    <td>{word}</td>
-                  </tr>
-                ))}
-            </tbody>
-          </table>
+        <div className="sidebar right flex-child">
+          <div className="history">
+            <table>
+              <thead>
+                <tr>
+                  <th>history</th>
+                </tr>
+              </thead>
+              <tbody>
+                {moveHistory
+                  .slice()  // As opposed to modifying in-place
+                  .reverse()
+                  .map((word: string, index: number) => (
+                    <tr key={index}>
+                      <td>{word}</td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </>
